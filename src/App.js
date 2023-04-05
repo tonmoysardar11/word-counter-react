@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import About from './Components/About';
 import Alert from './Components/Alert';
 import {
-  BrowserRouter,
+  // BrowserRouter,
   HashRouter,
   Routes,
   Route,
@@ -93,7 +93,7 @@ function App() {
     <Alert alert={alert}/>
     <Routes>
       <Route exact path="/" element={
-      <Home cardTitle='Word Counter' showAlert={showAlert} mode={mode} />
+      <Home cardTitle='Try Word Counter, Character Counter, To Lowercase, To Uppercase' showAlert={showAlert} mode={mode} />
        } />
       <Route exact path="about" element={<About mode={mode} />} />
    </Routes>

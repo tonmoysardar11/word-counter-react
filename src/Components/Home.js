@@ -12,13 +12,7 @@ export default function Card(props) {
         props.showAlert('success', 'Converted To Uppercase');
         // rectifier func of word count
     }
-    function spaceEdit(abc) {
-        if (abc === '') {
-            let x = (abc.split(' ').length - 1);
-            return x;
-        }
-        else return abc.split(' ').length;
-    }
+    
 
     // lowercase func
     function lower() {
@@ -38,6 +32,7 @@ export default function Card(props) {
         input.select();
         navigator.clipboard.writeText(input.value);
         props.showAlert('success', 'Text Copied!!!');
+        document.getSelection().removeAllRanges();
     }
     // edit input changer function
     function change(event) {
@@ -54,10 +49,10 @@ export default function Card(props) {
                     <div className="my-2">
                         <textarea className={`form-control bg-${props.mode} text-${props.mode === 'dark' ? 'light' : 'dark'} mx-2`} name="Enter Your Text" id="textArea" placeholder='Enter Your Text' value={text} onChange={change} rows="10" ></textarea>
                     </div>
-                    <button className={`btn btn-${props.mode === 'dark' ? 'light' : 'dark'} mx-2`} onClick={upper}>Transform UpperCase</button>
-                    <button className={`btn btn-${props.mode === 'dark' ? 'light' : 'dark'} mx-2`} onClick={lower}>Transform LowerCase</button>
-                    <button className={`btn btn-${props.mode === 'dark' ? 'light' : 'dark'} mx-2`} onClick={copy}>Copy Text</button>
-                    <button className={`btn btn-${props.mode === 'dark' ? 'light' : 'dark'} mx-2`} onClick={reset}>Reset Panel</button>
+                    <button disabled={text.length===0}className={`btn btn-${props.mode === 'dark' ? 'light' : 'dark'} mx-2 my-2`} onClick={upper}>Transform UpperCase</button>
+                    <button disabled={text.length===0}className={`btn btn-${props.mode === 'dark' ? 'light' : 'dark'} mx-2 my-2`} onClick={lower}>Transform LowerCase</button>
+                    <button disabled={text.length===0}className={`btn btn-${props.mode === 'dark' ? 'light' : 'dark'} mx-2 my-2`} onClick={copy}>Copy Text</button>
+                    <button disabled={text.length===0}className={`btn btn-${props.mode === 'dark' ? 'light' : 'dark'} mx-2 my-2`} onClick={reset}>Reset Panel</button>
 
 
                 </div>
@@ -65,8 +60,8 @@ export default function Card(props) {
                 <div className={` form-control container my-4 bg-${props.mode} text-${props.mode === 'dark' ? 'light' : 'dark'} mx-2`}  >
                     <h3>Text Stats</h3>
                     <br />
-                    <p>Your text has {spaceEdit(text)} words and {text.length} characters</p>
-                    <p>Time needed to read : {(spaceEdit(text) * 0.008).toFixed(2)} Minutes</p>
+                    <p>Your text has {text.split(' ').filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
+                    <p>Time needed to read : {((text.split(' ').filter((element)=>{return element.length!==0}).length) * 0.008).toFixed(2)} Minutes</p>
 
                     <br />
                     <h3>Input Preview</h3>
