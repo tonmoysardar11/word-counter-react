@@ -60,8 +60,9 @@ export default function Card(props) {
                 <div className={` form-control container my-4 bg-${props.mode} text-${props.mode === 'dark' ? 'light' : 'dark'} mx-2`}  >
                     <h3>Text Stats</h3>
                     <br />
-                    <p>Your text has {text.split(' ').filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
-                    <p>Time needed to read : {((text.split(' ').filter((element)=>{return element.length!==0}).length) * 0.008).toFixed(2)} Minutes</p>
+                    <p>Your text has {text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
+                    {/* /\s+/ is regular expression for taking new lines and spaces,+ for more than one */}
+                    <p>Time needed to read : {((text.split(/\s+/).filter((element)=>{return element.length!==0}).length) * 0.008).toFixed(2)} Minutes</p>
 
                     <br />
                     <h3>Input Preview</h3>
