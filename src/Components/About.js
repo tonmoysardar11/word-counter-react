@@ -9,7 +9,7 @@ const About = (props) => {
   </div>
   <div className="card-body my-2">
     <blockquote className="blockquote mb-0">
-      <p>A place where you can manipulate your text content and use it in real life</p>
+      <p>Word Counter is a platfrom where you can do word counter & character counter works,manipulate your text content like lowercase to uppercase,uppercase to lowercase,copy words and use it in real life</p>
       <footer className="blockquote-footer">By the admin of <cite title="Source Title">Word Counter</cite></footer>
     </blockquote>
   </div>
